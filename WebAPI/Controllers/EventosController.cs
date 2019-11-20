@@ -27,8 +27,11 @@ namespace WebAPI.Controllers
 
 
         // POST: api/Eventos
-        public void Post([FromBody]string value)
+        public void PostEvento([FromBody]EventoEXA aps)
         {
+            
+            var repo = new EventoInsert();
+            repo.insertarApuesta(aps);
         }
 
         // PUT: api/Eventos/5

@@ -38,3 +38,19 @@ namespace WebAPI.Models
         
     }
 }
+public class EventoEXA
+{
+    public EventoEXA(int id_evento, string local, string visitante, double tipo_mercado)
+    {
+        Id_evento = id_evento;
+        Local = local;
+        Visitante = visitante;
+        Tipo_mercado = tipo_mercado;
+
+    }
+
+    public int Id_evento { get; set; }
+    public String Local { get; set; }
+    public String Visitante { get; set; }
+    public double Tipo_mercado { get; set; }
+}

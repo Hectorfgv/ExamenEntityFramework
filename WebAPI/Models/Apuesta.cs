@@ -17,6 +17,16 @@ namespace WebAPI.Models
             Dinero_apostado = dinero_apostado;
          
         }
+        public Apuesta(int tipo_apuesta, double cuota, double dinero_apostado, int id_mercado, int id_usuario, int id_apuesta)
+        {
+            Id_apuesta = id_apuesta;
+            Id_mercado = id_mercado;
+            Id_usuario = id_usuario;
+            Tipo_apuesta = tipo_apuesta;
+            Cuota = cuota;
+            Dinero_apostado = dinero_apostado;
+
+        }
         public Apuesta(int tipo_apuesta, double cuota, double dinero_apostado)
         {
             
@@ -25,7 +35,23 @@ namespace WebAPI.Models
             Dinero_apostado = dinero_apostado;
 
         }
-         public Apuesta (int id_evento, double tipo_mercado, int tipo_apuesta, double cuota, double dinero_apostado)
+        public Apuesta(double dinero_apostado, String nombre, double cuota)
+        {
+
+            Nombre = nombre;
+            Cuota = cuota;
+            Dinero_apostado = dinero_apostado;
+
+        }
+        public Apuesta(double menor, double mayor)
+        {
+
+            
+            Menor = menor;
+            Mayor = mayor;
+
+        }
+        public Apuesta (int id_evento, double tipo_mercado, int tipo_apuesta, double cuota, double dinero_apostado)
         {
             Id_evento = id_evento;
             Tipo_mercado = tipo_mercado;
@@ -48,6 +74,7 @@ namespace WebAPI.Models
 
         public int Id_apuesta { get; set; }
         public String Email { get; set; }
+        public String Nombre { get; set; }
 
         public int Id_evento { get; set; }
         public int Id_mercado { get; set; }
@@ -56,7 +83,9 @@ namespace WebAPI.Models
         public double Tipo_mercado { get; set; }
         public double Cuota { get; set; }
         public double Dinero_apostado { get; set; }
-       
+        public double Menor { get; set; }
+        public double Mayor { get; set; }
+
     }
     public class ApuestaDTO
     {
@@ -79,5 +108,50 @@ namespace WebAPI.Models
         public double Dinero_apostado { get; set; }
 
     }
-    
+    public class ApuestaExamen
+    {
+        public ApuestaExamen(double dinero_apostado, String nombre, double cuota)
+        {
+            Dinero_apostado = dinero_apostado;
+            Nombre = nombre;
+            Cuota = cuota;
+     
+
+        }
+
+
+        
+        public String Nombre { get; set; }
+        public double Cuota { get; set; }
+        public double Dinero_apostado { get; set; }
+
+    }
+    public class Apuesta2
+    {
+        public Apuesta2(int tipo_apuesta, double cuota, double dinero_apostado, int id_mercado, int id_usuario, int id_apuesta)
+        {
+            Tipo_apuesta = tipo_apuesta;
+            Cuota = cuota;
+            Dinero_apostado = dinero_apostado;
+            Id_mercado = id_mercado;
+            Id_usuario = id_usuario;
+            Id_apuesta = id_apuesta;
+
+
+        }
+
+
+
+        public int Tipo_apuesta { get; set; }
+        public double Cuota { get; set; }
+        public double Dinero_apostado { get; set; }
+        public int Id_mercado { get; set; }
+        public int Id_usuario { get; set; }
+        public int Id_apuesta { get; set; }
+
+
+    }
+
+
+
 }

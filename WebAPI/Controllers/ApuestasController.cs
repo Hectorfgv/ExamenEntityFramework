@@ -18,26 +18,26 @@ namespace WebAPI.Controllers
             List<Apuesta> apuestas = repo.Retrieve();
             return apuestas;
         }*/
-        [Authorize(Roles="Standard")]
+        //[Authorize(Roles="Standard")]
         //GET: API/Apuestas
-        public IEnumerable<ApuestaDTO> GetDatosApuesta()
+        /*public IEnumerable<ApuestaDTO> GetDatosApuesta()
         {
             var repo = new ApuestaRepository();
             List<ApuestaDTO> apuestas = repo.RetrieveApuesta();
             return apuestas;
-        }
+        }*/
         // GET: api/Apuestas?email={email}
-        public IEnumerable<Apuesta>GetApuestas1(String email)
+        public IEnumerable<Apuesta2> GetApuestas1(double menor, double mayor)
         {
             var repo = new ApuestaRepository();
-            List<Apuesta> apuesta = repo.RetrieveApuestas1(email);
+            List<Apuesta2> apuesta = repo.RetrieveApuestas1(menor, mayor);
             return apuesta;
         }
         // GET: api/Apuestas?id_mercado={id_mercado}
-        public IEnumerable<Apuesta> GetApuestas2(int id_mercado)
+        public IEnumerable<ApuestaExamen> GetApuestasExamen()
         {
             var repo = new ApuestaRepository();
-            List<Apuesta> apuesta = repo.RetrieveApuestas2(id_mercado);
+            List<ApuestaExamen> apuesta = repo.ApuestasExamen();
             return apuesta;
         }
 

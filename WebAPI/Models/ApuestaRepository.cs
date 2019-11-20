@@ -165,7 +165,7 @@ namespace WebAPI.Models
             }
 
         }
-        internal List<Apuesta> RetrieveApuestas1(String email)
+        /*internal List<Apuesta> RetrieveApuestas1(String email)
         {
             CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
             culInfo.NumberFormat.NumberDecimalSeparator = ".";
@@ -206,6 +206,8 @@ namespace WebAPI.Models
 
             
             con.Open();
+            MySqlConnection con = Connect();
+            MySqlCommand command = con.CreateCommand();
             command.CommandText = "select m.eventos_id_evento, m.over_under, a.tipo_apuesta, a.cuota, a.dinero_apostado from mercados m, apuestas a" +
                 " where a.mercados_id_mercado=m.id_mercado and a.usuarios_id_usuarios=" + userid;
             
@@ -236,7 +238,7 @@ namespace WebAPI.Models
             }
 
 
-        }
+        }*/
 
         internal List<Apuesta> RetrieveApuestas2(int id_mercado)
         {
@@ -280,9 +282,89 @@ namespace WebAPI.Models
 
 
         }
+        
+        internal List<Apuesta2> RetrieveApuestas1(double menor, double mayor)
+        {
+            MySqlConnection con = Connect();
+            MySqlCommand command = con.CreateCommand();
+            command.CommandText = "SELECT * FROM apuestas WHERE cuota BETWEEN " + menor + " AND " + mayor;
+
+
+            try
+            {
+                con.Open();
+                MySqlDataReader res = command.ExecuteReader();
+
+                Apuesta2 a = null;
+                List<Apuesta2> apuestas = new List<Apuesta2>();
+
+                while (res.Read())
+                {
+                    Debug.WriteLine("Tipo de apuesta: " + res.GetInt32(0) + " Cuota: " + res.GetDouble(1) +
+                        " Dinero apostado: " + res.GetDouble(2) + " Id Mercado: " + res.GetInt32(3) + " Id Usuario: " + res.GetInt32(4) + " Id Evento" +res.GetInt32(5));
+                    a = new Apuesta2(res.GetInt32(0), res.GetDouble(1), res.GetInt32(2), res.GetInt32(3), res.GetInt32(4), res.GetInt32(5));
+
+                    apuestas.Add(a);
+
+                }
+                con.Close();
+                return apuestas;
+            }
+            catch (MySqlException e)
+            {
+                Debug.WriteLine("Error de conexión");
+                return null;
+            }
+
+
+
+        }
+        internal List<ApuestaExamen> ApuestasExamen()
+        {
+            CultureInfo culInfo = new System.Globalization.CultureInfo("es-ES");
+            culInfo.NumberFormat.NumberDecimalSeparator = ".";
+            culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+            culInfo.NumberFormat.PercentDecimalSeparator = ".";
+            culInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = culInfo;
+
+            MySqlConnection con = Connect();
+            MySqlCommand command = con.CreateCommand();
+            command.CommandText = "select a.dinero_apostado, a.cuota, u.nombre from apuestas a, usuarios u where u.id_usuario=a.usuarios_id_usuarios";
+            Debug.WriteLine("COMMAND " + command.CommandText);
+            
+    
+            try
+            {
+                con.Open();
+                MySqlDataReader res = command.ExecuteReader();
+
+                ApuestaExamen m = null;
+                List<ApuestaExamen> datos = new List<ApuestaExamen>();
+
+                while (res.Read())
+                {
+                    Debug.WriteLine("Cantidad:  " + res.GetDouble(0) + " Nombre_usuario " + res.GetString(2) + " Cuota_apuesta : " + res.GetDouble(1));
+
+                    m = new ApuestaExamen(res.GetDouble(0), res.GetString(2), res.GetDouble(1));
+                    datos.Add(m);
+                }
+                con.Close();
+                return datos;
+            }
+            catch (MySqlException e)
+            {
+                Debug.WriteLine("Error de conexión");
+                return null;
+            }
+
+
+        }
+
 
 
 
 
     }
 }
+ 
