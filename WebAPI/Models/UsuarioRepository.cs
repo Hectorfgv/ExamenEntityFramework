@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+using System.Data.Entity;
+
 
 
 namespace WebAPI.Models

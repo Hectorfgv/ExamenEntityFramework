@@ -5,25 +5,29 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using System.Data.Entity;
+using System.Data.Entity;
+
 
 namespace WebAPI.Models
 {
     public class MercadoRepository
     {
 
+        //Mostrar todos los mercados
         internal List<Mercado> Retrieve()
         {
-
-
+             
             List<Mercado> todos = new List<Mercado>();
             using (DDBBContext context = new DDBBContext())
             {
                 todos = context.Mercados.ToList();
+                //todos = context.Mercados.Include(p => p.Evento).ToList();
             }
             return todos;
 
         }
-
+        //mostrar mecados por id insertada
         internal Mercado RetrieveById(int id)
         {
             Mercado mercados;
@@ -35,6 +39,31 @@ namespace WebAPI.Models
             }
             return mercados;
         }
+        //insertar mercado
+        internal void Save(Mercado e)
+        {
+            DDBBContext context = new DDBBContext();
+            context.Mercados.Add(e);
+            context.SaveChanges();
+        }
+
+        //mercadoDTO muestra mercado solo con la informacion pedida
+        public MercadoDTO ToDTO(Mercado m)
+        {
+            return new MercadoDTO(m.Over_under, m.Cuota_over, m.Cuota_under);
+        }
+        internal List<MercadoDTO> RetrieveDTO()
+        {
+            List<MercadoDTO> mercados;
+            using (DDBBContext context = new DDBBContext())
+            {
+                mercados = context.Mercados.Select(p => ToDTO(p)).ToList();
+            }
+            return mercados;
+        }
+
+
+
         /*
         private MySqlConnection Connect()
         {

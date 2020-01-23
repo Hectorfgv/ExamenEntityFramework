@@ -41,24 +41,26 @@ namespace WebAPI.Models
     }
     public class ApuestaDTO
     {
-        public ApuestaDTO(int tipo_apuesta, double cuota, double dinero_apostado, String email, int id_mercado)
+        public ApuestaDTO(int id_apuesta, int id_evento, int id_usuario, int tipo_apuesta, double cuota, double dinero_apostado, Mercado mercado)
         {
+            ApuestaID = id_apuesta;
+            EventoID = id_evento;
+            UsuarioID = id_usuario;
             Tipo_apuesta = tipo_apuesta;
             Cuota = cuota;
             Dinero_apostado = dinero_apostado;
-            Email = email;
-            MercadoID = id_mercado;
-            
+            Mercado = mercado;
+  
 
         }
 
-      
-        public int MercadoID { get; set; }
+        public int ApuestaID { get; set; }
+        public int EventoID { get; set; }
         public int Tipo_apuesta { get; set; }
-        public String Email { get; set; }
         public double Cuota { get; set; }
         public double Dinero_apostado { get; set; }
-
+        public int UsuarioID { get; set; }
+        public Mercado Mercado { get; set; }
     }
     public class ApuestaExamen
     {

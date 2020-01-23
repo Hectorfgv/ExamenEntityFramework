@@ -36,27 +36,20 @@ namespace WebAPI.Models
         public Evento Evento { get; set; }
         public int EventoID { get; set; }
         public List<Apuesta> Apuestas { get; set; }
+        
 
     }
-    /*
     public class MercadoDTO
     {
-        public MercadoDTO(double over_under, double cuota_over, double cuota_under)
+        public MercadoDTO(double tipo_mercado, double cuota_under, double cuota_over)
         {
-            Over_under = over_under;
-            Cuota_over = cuota_over;
+            Tipo_mercado = tipo_mercado;
             Cuota_under = cuota_under;
-
+            Cuota_over = cuota_over;
         }
 
-       
-
-        
-        public double Over_under { get; set; }
-        public double Cuota_over { get; set; }
+        public double Tipo_mercado { get; set; }
         public double Cuota_under { get; set; }
-       
-
+        public double Cuota_over { get; set; }
     }
-    */
 }

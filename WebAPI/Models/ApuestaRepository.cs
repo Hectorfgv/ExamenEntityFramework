@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using WebAPI.Models;
+using System.Data.Entity;
 
 namespace WebAPI.Models
 {
@@ -18,7 +19,8 @@ namespace WebAPI.Models
             List<Apuesta> todos = new List<Apuesta>();
             using (DDBBContext context = new DDBBContext())
             {
-                todos = context.Apuestas.ToList();
+                //todos = context.Apuestas.ToList();
+                todos = context.Apuestas.Include(m => m.Mercado).ToList();
             }
             return todos;
 
@@ -35,6 +37,51 @@ namespace WebAPI.Models
                     .FirstOrDefault();
             }
             return apuestas;
+        }
+
+        internal void Save(Apuesta a)
+        {
+            DDBBContext context = new DDBBContext();
+            context.Apuestas.Add(a);
+            context.SaveChanges();
+
+            Mercado mer = new Mercado();
+            mer = context.Mercados
+                        .Where(m => m.MercadoID == a.MercadoID).FirstOrDefault();
+
+
+            if (a.Tipo_apuesta == 0)
+            {
+                mer.Dinero_under += a.Dinero_apostado;
+
+            }
+            else
+            {
+                mer.Dinero_over += a.Dinero_apostado;
+            }
+
+            var probOver = mer.Dinero_over / (mer.Dinero_under + mer.Dinero_over);
+            var probUnder = mer.Dinero_under / (mer.Dinero_over + mer.Dinero_under);
+
+            mer.Cuota_under = Math.Round(Convert.ToDouble((1 / probOver) * 0.95));
+            mer.Cuota_over = Math.Round(Convert.ToDouble((1 / probUnder) * 0.95));
+
+            context.Mercados.Update(mer);
+            context.SaveChanges();
+        }
+
+        public ApuestaDTO ToDTO(Apuesta a)
+        {
+            return new ApuestaDTO(a.ApuestaID, a.EventoID, a.UsuarioID, a.Tipo_apuesta, a.Cuota, a.Dinero_apostado, a.Mercado);
+        }
+
+        internal List<ApuestaDTO> RetrieveDTO()
+        {
+            DDBBContext context = new DDBBContext();
+            List<ApuestaDTO> apuestasDTO = new List<ApuestaDTO>();
+           
+            apuestasDTO = context.Apuestas.Include(a => a.Mercado).Select(m => ToDTO(m)).ToList();
+            return apuestasDTO;
         }
         /*
         private MySqlConnection Connect()

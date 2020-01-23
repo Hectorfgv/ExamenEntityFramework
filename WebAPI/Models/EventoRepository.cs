@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using System.Data.Entity;
+
 
 namespace WebAPI.Models
 {
@@ -27,6 +29,25 @@ namespace WebAPI.Models
             DDBBContext context = new DDBBContext();
             context.Eventos.Add(e);
             context.SaveChanges();
+        }
+        internal void Update(int id, Evento ev)
+        {
+            Evento evento;
+            using (DDBBContext context = new DDBBContext())
+            {
+                evento = context.Eventos.Where(e => e.EventoID == id).FirstOrDefault();
+                evento.Local = ev.Local;
+                evento.Visitante = ev.Visitante;
+                context.SaveChanges();
+            }
+        }
+        internal void Delete(int id)
+        {
+            using (DDBBContext context = new DDBBContext())
+            {
+                context.Eventos.Remove(context.Eventos.Where(e => e.EventoID == id).FirstOrDefault());
+                context.SaveChanges();
+            }
         }
 
     }

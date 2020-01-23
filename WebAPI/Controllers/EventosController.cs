@@ -24,6 +24,18 @@ namespace WebAPI.Controllers
             var repo = new EventoRepository();
             repo.Save(evento);
         }
+        // PUT: api/Eventos/5
+        public void Put(int id, [FromBody]Evento ev)
+        {
+            var repo = new EventoRepository();
+            repo.Update(id, ev);
+        }
+        // DELETE: api/Eventos/5
+        public void Delete(int id)
+        {
+            var repo = new EventoRepository();
+            repo.Delete(id);
+        }
 
         // GET: api/Eventos
         /*
@@ -44,13 +56,16 @@ namespace WebAPI.Controllers
         }*/
 
         // PUT: api/Eventos/5
+        /*
         public void Put(int id, [FromBody]string value)
         {
         }
-
+        */
+        /*
         // DELETE: api/Eventos/5
         public void Delete(int id)
         {
         }
+        */
     }
 }
