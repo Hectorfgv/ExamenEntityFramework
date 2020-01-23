@@ -7,84 +7,36 @@ namespace WebAPI.Models
 {
     public class Apuesta
     {
-        public Apuesta(int id_apuesta, int id_mercado, int id_usuario, int tipo_apuesta, double cuota, double dinero_apostado)
+        public Apuesta(int id_apuesta, int id_evento, int id_mercado, int id_usuario, int tipo_apuesta, double cuota, double dinero_apostado)
         {
-            Id_apuesta = id_apuesta;
-            Id_mercado = id_mercado;
-            Id_usuario = id_usuario;
+            ApuestaID = id_apuesta;
+            EventoID = id_evento;
+            MercadoID = id_mercado;
+            UsuarioID = id_usuario;
             Tipo_apuesta = tipo_apuesta;
             Cuota = cuota;
             Dinero_apostado = dinero_apostado;
          
         }
-        public Apuesta(int tipo_apuesta, double cuota, double dinero_apostado, int id_mercado, int id_usuario, int id_apuesta)
+        
+
+        public Apuesta()
         {
-            Id_apuesta = id_apuesta;
-            Id_mercado = id_mercado;
-            Id_usuario = id_usuario;
-            Tipo_apuesta = tipo_apuesta;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-
-        }
-        public Apuesta(int tipo_apuesta, double cuota, double dinero_apostado)
-        {
-            
-            Tipo_apuesta = tipo_apuesta;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-
-        }
-        public Apuesta(double dinero_apostado, String nombre, double cuota)
-        {
-
-            Nombre = nombre;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-
-        }
-        public Apuesta(double menor, double mayor)
-        {
-
-            
-            Menor = menor;
-            Mayor = mayor;
-
-        }
-        public Apuesta (int id_evento, double tipo_mercado, int tipo_apuesta, double cuota, double dinero_apostado)
-        {
-            Id_evento = id_evento;
-            Tipo_mercado = tipo_mercado;
-            Tipo_apuesta = tipo_apuesta;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-
-
-        }
-        public Apuesta(String email, double tipo_mercado, int tipo_apuesta, double cuota, double dinero_apostado)
-        {
-            Email = email;
-            Tipo_mercado = tipo_mercado;
-            Tipo_apuesta = tipo_apuesta;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-
 
         }
 
-        public int Id_apuesta { get; set; }
-        public String Email { get; set; }
-        public String Nombre { get; set; }
-
-        public int Id_evento { get; set; }
-        public int Id_mercado { get; set; }
-        public int Id_usuario { get; set; }
+        public int ApuestaID { get; set; }
+        
+        public int EventoID { get; set; }
+        public int MercadoID { get; set; }
+        public int UsuarioID { get; set; }
         public int Tipo_apuesta { get; set; }
-        public double Tipo_mercado { get; set; }
+        
         public double Cuota { get; set; }
         public double Dinero_apostado { get; set; }
-        public double Menor { get; set; }
-        public double Mayor { get; set; }
+        
+        public Usuario Usuario { get; set; }
+        public Mercado Mercado { get; set; }
 
     }
     public class ApuestaDTO
@@ -95,13 +47,13 @@ namespace WebAPI.Models
             Cuota = cuota;
             Dinero_apostado = dinero_apostado;
             Email = email;
-            Id_mercado = id_mercado;
+            MercadoID = id_mercado;
             
 
         }
 
       
-        public int Id_mercado { get; set; }
+        public int MercadoID { get; set; }
         public int Tipo_apuesta { get; set; }
         public String Email { get; set; }
         public double Cuota { get; set; }
@@ -133,9 +85,9 @@ namespace WebAPI.Models
             Tipo_apuesta = tipo_apuesta;
             Cuota = cuota;
             Dinero_apostado = dinero_apostado;
-            Id_mercado = id_mercado;
-            Id_usuario = id_usuario;
-            Id_apuesta = id_apuesta;
+            MercadoID = id_mercado;
+            UsuarioID = id_usuario;
+            ApuestaID = id_apuesta;
 
 
         }
@@ -145,9 +97,9 @@ namespace WebAPI.Models
         public int Tipo_apuesta { get; set; }
         public double Cuota { get; set; }
         public double Dinero_apostado { get; set; }
-        public int Id_mercado { get; set; }
-        public int Id_usuario { get; set; }
-        public int Id_apuesta { get; set; }
+        public int MercadoID { get; set; }
+        public int UsuarioID { get; set; }
+        public int ApuestaID { get; set; }
 
 
     }

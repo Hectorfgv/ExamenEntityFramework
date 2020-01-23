@@ -12,13 +12,21 @@ namespace WebAPI.Controllers
     public class MercadosController : ApiController
     {
         // GET: api/Mercados
-        /*public IEnumerable<Mercado> Get()
+        public IEnumerable<Mercado> Get()
         {
             var repo = new MercadoRepository();
             List<Mercado> mercados = repo.Retrieve();
             return mercados;
-        }*/
+        }
+
+        public Mercado Get(int MercadoId)
+        {
+            var repo = new MercadoRepository();
+            Mercado m = repo.RetrieveById(MercadoId);
+            return m;
+        }
         // GET: api/Mercados/tipo
+        /*
         public IEnumerable<MercadoDTO> GetTipoMercado()
         {
             var repo = new MercadoRepository();
@@ -33,7 +41,7 @@ namespace WebAPI.Controllers
             List<Mercado> mercados = repo.RetrieveIdEvento(id_evento);
             return mercados;
         }
-
+        */
         // POST: api/Mercados
         public void Post([FromBody]string value)
         {

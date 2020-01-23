@@ -11,6 +11,32 @@ namespace WebAPI.Models
 {
     public class ApuestaRepository
     {
+        internal List<Apuesta> Retrieve()
+        {
+
+
+            List<Apuesta> todos = new List<Apuesta>();
+            using (DDBBContext context = new DDBBContext())
+            {
+                todos = context.Apuestas.ToList();
+            }
+            return todos;
+
+
+        }
+
+        internal Apuesta RetrieveById(int id)
+        {
+            Apuesta apuestas;
+            using (DDBBContext context = new DDBBContext())
+            {
+                apuestas = context.Apuestas
+                    .Where(s => s.ApuestaID == id)
+                    .FirstOrDefault();
+            }
+            return apuestas;
+        }
+        /*
         private MySqlConnection Connect()
         {
             String connString = "Server=localhost;Port=3306;Database=adt1;Uid=root;password=;SslMode=none";
@@ -238,7 +264,7 @@ namespace WebAPI.Models
             }
 
 
-        }*/
+        }
 
         internal List<Apuesta> RetrieveApuestas2(int id_mercado)
         {
@@ -359,7 +385,7 @@ namespace WebAPI.Models
             }
 
 
-        }
+        }*/
 
 
 

@@ -15,12 +15,14 @@ namespace WebAPI.Controllers
         {
             return new string[] { "value1", "value2" };
         }*/
+        /*
         public IEnumerable<UsuarioDTO> GetEmail()
         {
             var repo = new UsuarioRepository();
             List<UsuarioDTO> mercados = repo.RetrieveEmail();
             return mercados;
         }
+        */
 
         // GET: api/Usuarios/5
         public string Get(int id)

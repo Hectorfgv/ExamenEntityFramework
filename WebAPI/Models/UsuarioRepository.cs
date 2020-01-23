@@ -9,7 +9,8 @@ using System.Diagnostics;
 namespace WebAPI.Models
 {
     public class UsuarioRepository
-    {
+    {   
+        /*
         private MySqlConnection Connect()
         {
             String connString = "Server=localhost;Port=3306;Database=adt1;Uid=root;password=;SslMode=none";
@@ -46,6 +47,6 @@ namespace WebAPI.Models
                 return null;
             }
 
-        }
+        }*/
     }
 }

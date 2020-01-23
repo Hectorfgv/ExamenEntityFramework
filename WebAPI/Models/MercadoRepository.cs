@@ -10,6 +10,32 @@ namespace WebAPI.Models
 {
     public class MercadoRepository
     {
+
+        internal List<Mercado> Retrieve()
+        {
+
+
+            List<Mercado> todos = new List<Mercado>();
+            using (DDBBContext context = new DDBBContext())
+            {
+                todos = context.Mercados.ToList();
+            }
+            return todos;
+
+        }
+
+        internal Mercado RetrieveById(int id)
+        {
+            Mercado mercados;
+            using (DDBBContext context = new DDBBContext())
+            {
+                mercados = context.Mercados
+                    .Where(s => s.MercadoID == id)
+                    .FirstOrDefault();
+            }
+            return mercados;
+        }
+        /*
         private MySqlConnection Connect()
         {
             String connString = "Server=localhost;Port=3306;Database=adt1;Uid=root;password=;SslMode=none";
@@ -117,7 +143,7 @@ namespace WebAPI.Models
             }
 
 
-        }
+        }*/
 
     }
 }

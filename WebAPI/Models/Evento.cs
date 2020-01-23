@@ -9,19 +9,24 @@ namespace WebAPI.Models
     {
         public Evento(int id_evento, string local, string visitante, int goles)
         {
-            Id_evento = id_evento;
+            EventoID = id_evento;
             Local = local;
             Visitante = visitante;
             Goles = goles;
         }
+        public Evento ()
+        {
+
+        }
         
 
-        public int Id_evento { get; set; }
+        public int EventoID { get; set; }
         public String Local { get; set; }
         public String Visitante { get; set; }
         public int Goles { get; set; }
+        public List<Mercado> Mercados { get; set; }
     }
-
+    /*
     public class EventoDTO
     {
         public EventoDTO(string local, string visitante)
@@ -36,21 +41,23 @@ namespace WebAPI.Models
         public String Local { get; set; }
         public String Visitante { get; set; }
         
-    }
+    }*/
 }
+
+/*
 public class EventoEXA
 {
     public EventoEXA(int id_evento, string local, string visitante, double tipo_mercado)
     {
-        Id_evento = id_evento;
+        EventoID = id_evento;
         Local = local;
         Visitante = visitante;
         Tipo_mercado = tipo_mercado;
 
     }
 
-    public int Id_evento { get; set; }
+    public int EventoID { get; set; }
     public String Local { get; set; }
     public String Visitante { get; set; }
     public double Tipo_mercado { get; set; }
-}
+}*/
