@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data.Entity;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace WebAPI.Models

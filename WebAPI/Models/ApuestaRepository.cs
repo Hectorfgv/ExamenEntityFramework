@@ -4,9 +4,10 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using WebAPI.Models;
-using System.Data.Entity;
+
 
 namespace WebAPI.Models
 {
