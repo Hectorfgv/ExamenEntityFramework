@@ -11,7 +11,15 @@ using System.Data.Entity;
 namespace WebAPI.Models
 {
     public class UsuarioRepository
-    {   
+
+
+    {
+        internal void Save(Usuario e)
+        {
+            DDBBContext context = new DDBBContext();
+            context.Usuarios.Add(e);
+            context.SaveChanges();
+        }
         /*
         private MySqlConnection Connect()
         {

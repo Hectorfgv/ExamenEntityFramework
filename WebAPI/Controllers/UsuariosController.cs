@@ -31,9 +31,16 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Usuarios
+        public void Post([FromBody]Usuario evento)
+        {
+            var repo = new UsuarioRepository();
+            repo.Save(evento);
+        }
+        /*
         public void Post([FromBody]string value)
         {
         }
+        */
 
         // PUT: api/Usuarios/5
         public void Put(int id, [FromBody]string value)

@@ -82,25 +82,15 @@ namespace WebAPI.Models
     }
     public class Apuesta2
     {
-        public Apuesta2(int tipo_apuesta, double cuota, double dinero_apostado, int id_mercado, int id_usuario, int id_apuesta)
+        public Apuesta2(int id_apuesta)
         {
-            Tipo_apuesta = tipo_apuesta;
-            Cuota = cuota;
-            Dinero_apostado = dinero_apostado;
-            MercadoID = id_mercado;
-            UsuarioID = id_usuario;
+            
             ApuestaID = id_apuesta;
 
 
         }
 
-
-
-        public int Tipo_apuesta { get; set; }
-        public double Cuota { get; set; }
-        public double Dinero_apostado { get; set; }
-        public int MercadoID { get; set; }
-        public int UsuarioID { get; set; }
+     
         public int ApuestaID { get; set; }
 
 

@@ -26,6 +26,22 @@ namespace WebAPI.Models
         public int Goles { get; set; }
         public List<Mercado> Mercados { get; set; }
     }
+    public class EventoTeam
+    {
+        public EventoTeam(int id_evento)
+        {
+            EventoID = id_evento;
+            
+        }
+        public EventoTeam()
+        {
+
+        }
+
+
+        public int EventoID { get; set; }
+        
+    }
     /*
     public class EventoDTO
     {

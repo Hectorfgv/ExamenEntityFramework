@@ -36,6 +36,13 @@ namespace WebAPI.Controllers
             Apuesta m = repo.RetrieveById(ApuestaId);
             return m;
         }
+
+        public List <Apuesta> Get(string equipo)
+        {
+            var repo = new ApuestaRepository();
+            return repo.RetrieveByTeam(equipo);
+          
+        }
         // POST: api/Apuestas
         public void Post([FromBody]Apuesta apuesta)
         {
