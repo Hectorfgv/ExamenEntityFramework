@@ -49,9 +49,26 @@ namespace WebAPI.Models
                 context.SaveChanges();
             }
         }
+        /*
+        public EventoExamen ToID(Evento e)
+        {
+            return new EventoExamen(e.Local, e.Visitante, e.Mercado);
+        }
 
+        internal List<EventoExamen> RetrieveByTeam(String eq)
+        {
+            List<EventoExamen> apuestas = new List<EventoExamen>();
+            using (DDBBContext context = new DDBBContext())
+            {
 
+                apuestas = context.Eventos.Where(e => e.Local == eq || e.Visitante == eq).Include(m => m.Mercado.).Select(m => ToID(m)).ToList();
 
+                
+            }
+            return apuestas;
+        }
+        */
+       
 
     }
 }

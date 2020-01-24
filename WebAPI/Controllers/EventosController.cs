@@ -17,6 +17,15 @@ namespace WebAPI.Controllers
             List<Evento> eventos = repo.Retrieve();
             return eventos;
         }
+        //examen
+        /*
+        public List<Evento> Get(string equipo)
+        {
+            var repo = new EventoRepository();
+            return repo.RetrieveByTeam(equipo);
+
+        }*/
+
 
         // POST: api/Eventos
         public void Post([FromBody]Evento evento)

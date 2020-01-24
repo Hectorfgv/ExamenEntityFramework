@@ -5,6 +5,7 @@ using System.Web;
 
 namespace WebAPI.Models
 {
+    
     public class Usuario
     {
         
@@ -33,7 +34,29 @@ namespace WebAPI.Models
         public List<Apuesta> Apuestas { get; set; }
         public List<Cuenta> Cuentas { get; set; }
     }
+    
+    public class Usuario2
+    {
 
+        public Usuario2(String nombre)
+        {
+
+
+            Nombre = nombre;
+
+        }
+        public Usuario2()
+        {
+
+        }
+
+
+
+
+        public String Nombre { get; set; }
+
+
+    }
 }
     
 

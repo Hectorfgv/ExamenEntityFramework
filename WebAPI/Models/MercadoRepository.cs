@@ -39,6 +39,9 @@ namespace WebAPI.Models
             }
             return mercados;
         }
+
+        
+
         //insertar mercado
         internal void Save(Mercado e)
         {

@@ -36,7 +36,10 @@ namespace WebAPI.Models
         public Evento Evento { get; set; }
         public int EventoID { get; set; }
         public List<Apuesta> Apuestas { get; set; }
-        
+       
+
+
+
 
     }
     public class MercadoDTO

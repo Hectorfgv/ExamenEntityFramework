@@ -64,10 +64,10 @@ namespace WebAPI.Models
     }
     public class ApuestaExamen
     {
-        public ApuestaExamen(double dinero_apostado, String nombre, double cuota)
+        public ApuestaExamen(double dinero_apostado, int tipo_apuesta, double cuota)
         {
             Dinero_apostado = dinero_apostado;
-            Nombre = nombre;
+            Tipo_apuesta = tipo_apuesta;
             Cuota = cuota;
      
 
@@ -76,9 +76,10 @@ namespace WebAPI.Models
 
         
         public String Nombre { get; set; }
+        public int Tipo_apuesta { get; set; }
         public double Cuota { get; set; }
         public double Dinero_apostado { get; set; }
-
+        
     }
     public class Apuesta2
     {

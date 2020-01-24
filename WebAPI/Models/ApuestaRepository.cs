@@ -13,7 +13,7 @@ namespace WebAPI.Models
 {
     public class ApuestaRepository
     {
-        
+        //examen
         internal List<Apuesta> Retrieve()
         {
 
@@ -22,7 +22,8 @@ namespace WebAPI.Models
             using (DDBBContext context = new DDBBContext())
             {
                 //todos = context.Apuestas.ToList();
-                todos = context.Apuestas.Include(m => m.Mercado).ToList();
+                //todos = context.Apuestas.Include(m => m.Usuario).Select(m => ToExamen2(m)).ToList();
+                todos = context.Apuestas.Include(m => m.Usuario).ToList();
             }
             return todos;
 
@@ -41,6 +42,30 @@ namespace WebAPI.Models
             }
             return apuestas;
         }
+
+        internal Apuesta RetrieveByIdExamen(int id)
+        {
+            Apuesta apuestas;
+            using (DDBBContext context = new DDBBContext())
+            {
+                apuestas = context.Apuestas
+                    .Where(s => s.MercadoID == id)
+                    .FirstOrDefault();
+            }
+            return apuestas;
+        }
+
+        public ApuestaExamen ToExamen(Apuesta a)
+        {
+            return new ApuestaExamen(a.Dinero_apostado, a.Tipo_apuesta, a.Cuota);
+        }
+
+        public Usuario2 ToExamen2(Apuesta a)
+        {
+            return new Usuario2(a.Usuario.Nombre);
+        }
+
+
 
 
         internal void Save(Apuesta a)
@@ -103,7 +128,7 @@ namespace WebAPI.Models
         }
 
         */
-
+        /*
         internal List <Apuesta> RetrieveByTeam(String eq)
         {
             List<Apuesta> apuestas = new List<Apuesta>();
@@ -113,7 +138,20 @@ namespace WebAPI.Models
                 apuestas = context.Apuestas.Where(a => a.Mercado.Evento.Local == eq || a.Mercado.Evento.Visitante == eq).ToList();
             }
             return apuestas;
+        }*/
+
+        internal List<Apuesta> RetrieveByTeam(String eq)
+        {
+            List<Apuesta> apuestas = new List<Apuesta>();
+            using (DDBBContext context = new DDBBContext())
+            {
+
+                apuestas = context.Apuestas.Where(a => a.Mercado.Evento.Local == eq || a.Mercado.Evento.Visitante == eq).ToList();
+            }
+            return apuestas;
         }
+
+
 
 
 

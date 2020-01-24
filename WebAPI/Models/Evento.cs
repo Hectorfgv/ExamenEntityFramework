@@ -42,6 +42,26 @@ namespace WebAPI.Models
         public int EventoID { get; set; }
         
     }
+    public class EventoExamen
+    {
+        public EventoExamen(string  local, string visitante, Mercado mercado)
+        {
+            Local = local;
+            Visitante = visitante;
+            Mercado = mercado;
+
+        }
+        public EventoExamen()
+        {
+
+        }
+
+
+        public String Local { get; set; }
+        public String Visitante { get; set; }
+        public Mercado Mercado { get; set; }
+
+    }
     /*
     public class EventoDTO
     {
