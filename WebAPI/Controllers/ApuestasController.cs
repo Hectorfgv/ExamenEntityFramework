@@ -13,22 +13,24 @@ namespace WebAPI.Controllers
     {
         // GET: api/Apuestas
         
+            /*
         public IEnumerable<Apuesta> Get()
         {
             var repo = new ApuestaRepository();
             List<Apuesta> apuestas = repo.Retrieve();
             return apuestas;
         }
+        */
         
         // GET: api/ApuestasDTO
-        /*
+        
         public IEnumerable<ApuestaDTO> Get()
         {
             var repo = new ApuestaRepository();
             List<ApuestaDTO> apuestas = repo.RetrieveDTO();
             return apuestas;
         }
-        */
+        
 
         public Apuesta Get(int ApuestaId)
         {
